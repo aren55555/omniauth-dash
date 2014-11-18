@@ -30,7 +30,7 @@ end
 use Rack::Session::Cookie, :secret => 'abc'
 
 use OmniAuth::Builder do
-  provider :dash, 'MWM3ZTg1N2EtZDA4Yy00N2E4LWEzODgtZmI4ZjI3YWFlOGUw', 'MmJiMGQ5YTEtYWY5NS00NjFkLWEwOTctOWFjNTM4ZGE3ZDU2t'
+  provider :dash, ENV['DASH_ID'], ENV['DASH_SECRET'], :scope => 'user trips', :callback_url => 'http://127.0.0.1:9292/auth/dash/callback'
 end
 
 run DashApp.new

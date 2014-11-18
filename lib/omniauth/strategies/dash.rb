@@ -3,7 +3,7 @@ require 'multi_json'
 
 module OmniAuth
   module Strategies
-    class Dash < OmniAuth::Strategies::OAuth2
+    class Dash < OmniAuth::Strategies::OAuth2  
       option :name, 'dash'
       
       option :client_options, {
@@ -12,6 +12,9 @@ module OmniAuth
         :token_url => 'https://dash.by/api/auth/token'
       }
       
+      def callback_url
+        options[:callback_url] || super
+      end      
     end
   end
 end
